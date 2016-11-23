@@ -7,12 +7,12 @@ app.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
     .state("homepage", {
       url:"/",
-      controller: "HomepageController",
+      controller: "HomepageController as homepageCtrl",
       templateUrl: "views/homepage.html"
     })
     .state("bubblePlot", {
       url:"/bubble-plot",
-      controller: "BubblePlotController",
+      controller: "BubblePlotController as bubblePlotCtrl",
       templateUrl: "views/bubblePlotHome.html"
     });
 
