@@ -2,14 +2,22 @@
 <html ng-app="AngularPlotly">
 <head>
 <meta charset="UTF-8">
-<title>User Auth</title>
+<title>Angular Plotly</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="library/custom_css/main.css" rel="stylesheet">
 </head>
 
 <body>
 
-<div ui-view></div>
+<div class="container">
+  <div ui-view></div>
+</div>
+
+
+
+<!-- Third-Party Libraries -->
+<script src="library/plotly/plotly.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
