@@ -42,3 +42,12 @@ $BXAF_CONFIG['TBL_PROJECTS']                  = 'Projects';
 $BXAF_CONFIG['TBL_SAMPLES']                   = 'Samples';
 $BXAF_CONFIG['TBL_USERPREFERENCE']            = 'UserPreference';
 $BXAF_CONFIG['TBL_GENECOMBINED']              = 'GeneCombined';
+
+
+// $sql = "SELECT * FROM `{$BXAF_CONFIG['TBL_COMPARISONS']}` WHERE `ComparisonIndex`=15";
+// $data = $DB -> get_all($sql);
+// print_r($data);
+
+// $array = array('1'=> '2', '2' => '3');
+// echo serialize($array);
+// exit();
