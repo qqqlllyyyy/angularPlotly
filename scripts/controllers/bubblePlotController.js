@@ -1,24 +1,13 @@
-app.controller('BubblePlotController', function($http) {
+app.controller('BubblePlotController', function($http, NavbarService) {
 
   var vm = this;
 
-  // Error message handling
-  vm.errorMsg = '';
-  vm.showErrorMsg = false;
+  // NavBar Service
+  vm.navBar = NavbarService;
+
+  vm.drawBtnBusy = false;
 
   vm.geneName = 'WASH7P';
-
-  vm.bubblePlotData = [{
-    x: [1, 2, 3, 4],
-    y: [10, 11, 12, 13],
-    mode: 'markers',
-    // marker: {
-    //   color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
-    //   opacity: [1, 0.8, 0.6, 0.4],
-    //   size: [40, 60, 80, 100]
-    // }
-  }];
-
 
   // Bubble Plot Layout
   vm.bubblePlotLayout = {
@@ -28,8 +17,11 @@ app.controller('BubblePlotController', function($http) {
     width: 480
   };
 
-  // Function
+
+  // Draw Function
   vm.refershBubblePlot = function() {
+
+    vm.drawBtnBusy = true;
 
     var data = {
       geneName: vm.geneName,
@@ -38,15 +30,28 @@ app.controller('BubblePlotController', function($http) {
     $http
       .post("backend/bubblePlotExe.php?action=getData", data)
       .success(function(response) {
+
         console.log(response);
 
-        if (response.message != 'Error') {
+
+        if (response.message == 'Success') {
           vm.bubblePlotData = response.plotData;
           Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
-        } else {
-          vm.errorMsg = response.messageDetail;
-          //vm.errorMsg = 'aa';
-          vm.showErrorMsg = true;
+          vm.drawBtnBusy = false;
+        }
+
+        else {
+          vm.drawBtnBusy = false;
+          bootbox.alert({
+            title: "Error",
+            message: response.messageDetail,
+            className: 'modal-error',
+            buttons: {
+              ok: {
+                  label: 'Got It!',
+              }
+            },
+          });
         }
 
       })
@@ -55,7 +60,6 @@ app.controller('BubblePlotController', function($http) {
         vm.errorMsg = error;
         vm.showErrorMsg = true;
       });
-
 
   };
 

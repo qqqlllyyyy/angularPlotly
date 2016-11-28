@@ -1,16 +1,17 @@
+
 <h1>Bubble Plot</h1>
 <hr />
-<a href="#/"><i class="fa fa-angle-double-right"></i> Back to homepage</a>
+<a ng-click="bubblePlotCtrl.navBar.changeState('homepage')"><i class="fa fa-angle-double-right"></i> Back to homepage</a>
+
 
 <div class="row m-x-0 m-t-1">
 
   <input ng-model="bubblePlotCtrl.geneName" class="form-control width-300">
 
-  <button ng-click="bubblePlotCtrl.refershBubblePlot()" class="m-t-1 btn btn-primary">
-    <i class="fa fa-paint-brush"></i> Draw
+  <button ng-click="bubblePlotCtrl.refershBubblePlot()" class="m-t-1 btn btn-primary" ng-disabled="bubblePlotCtrl.drawBtnBusy">
+    <span ng-if="!bubblePlotCtrl.drawBtnBusy"><i class="fa fa-paint-brush"></i> Draw</span>
+    <span ng-if="bubblePlotCtrl.drawBtnBusy"><i class="fa fa-spin fa-spinner"></i> Draw</span>
   </button>
 </div>
-
-<span ng-show="bubblePlotCtrl.showErrorMsg">{{ bubblePlotCtrl.errorMsg }}</span>
 
 <div id="bubblePlotDiv" style="width: 480px; height: 400px;"></div>
