@@ -1,0 +1,17 @@
+<div class="left-bar" ng-controller="LeftBarController as leftBarCtrl">
+
+  <ul>
+    <!-- <a ui-sref="homepage"><li ng-class="{'active': leftBarCtrl.state == 'homepage'}">Home</li></a>
+    <a ui-sref="bubblePlot"><li>Bubble Plot</li></a> -->
+
+    <a ng-repeat="list in leftBarCtrl.stateList"
+       ui-sref="{{ list.link }}"
+       ng-click="leftBarCtrl.changeState(list.link)">
+      <li ng-class="{'active': leftBarCtrl.state == list.link}">
+        <i class="fa {{ list.icon }}"></i>&nbsp;
+        {{ list.name }}
+      </li>
+    </a>
+  </ul>
+
+</div>

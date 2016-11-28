@@ -4,6 +4,8 @@ app.controller('BubblePlotController', function($http) {
 
   vm.text = '';
 
+  //vm.state = LeftBarController.state;
+
   vm.geneName = 'WASH7P';
 
   vm.bubblePlotData = [{
@@ -37,8 +39,14 @@ app.controller('BubblePlotController', function($http) {
       .post("backend/bubblePlotExe.php?action=getData", data)
       .success(function(response) {
         console.log(response);
-        vm.bubblePlotData = response;
-        Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
+
+        if (response.message == 'Success') {
+          vm.bubblePlotData = response.plotData;
+          Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
+        } else {
+          alert(response.messageDetail);
+        }
+
       })
       .error(function(error) {
         console.log(error);

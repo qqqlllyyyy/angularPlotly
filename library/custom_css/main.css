@@ -9,3 +9,47 @@
 .width-300 {
   width: 300px;
 }
+
+
+
+/*--------------------------------------------------------------------------------*/
+/*-- Main Page Layout --*/
+/*--------------------------------------------------------------------------------*/
+
+.left-bar {
+  position:absolute;
+  /*float: left;*/
+  width: 200px;
+  background-color: #424F5A;
+}
+.left-bar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.left-bar li {
+  font-size: 16px;
+  padding: 10px;
+  border-left: 6px solid #424F5A;
+  color: #FBFBFB;
+  transition: all 0.3s ease 0s;
+}
+.left-bar li:hover {
+  background-color: #5E6972;
+  border-left: 6px solid #5E6972;
+}
+.left-bar li.active {
+  background-color: #343F48;
+  border-left: 6px solid #FF9500;
+  color: white !important;
+}
+.left-bar ul a {
+  color: #FBFBFB;
+  text-decoration: none;
+}
+
+#main-container {
+  margin-left: 200px;
+  display: inline-block;
+  padding: 10px 20px;
+}
