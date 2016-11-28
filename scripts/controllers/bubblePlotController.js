@@ -59,7 +59,7 @@ app.controller('BubblePlotController', function($http, NavbarService) {
         vm.errorMsg = error;
         vm.showErrorMsg = true;
       });
-
+      
   };
 
 });
