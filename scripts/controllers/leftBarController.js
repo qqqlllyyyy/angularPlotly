@@ -1,15 +1,12 @@
-app.controller('LeftBarController', function() {
+app.controller('LeftBarController', function(NavbarService) {
   var vm = this;
 
-  vm.state = 'homepage';
+  vm.state = NavbarService.state;
 
-  vm.stateList = [
-    {'link': 'homepage', 'name': 'Home', 'icon': 'fa-home'},
-    {'link': 'bubblePlot', 'name': 'Bubble Plot', 'icon': 'fa-dot-circle-o'}
-  ];
+  vm.stateList = NavbarService.stateList;
 
   vm.changeState = function(newState) {
     vm.state = newState;
-  }
+  };
 
 });

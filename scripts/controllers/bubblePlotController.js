@@ -1,10 +1,8 @@
-app.controller('BubblePlotController', function($http) {
+app.controller('BubblePlotController', function($http, NavbarService) {
 
   var vm = this;
 
-  vm.text = '';
-
-  //vm.state = LeftBarController.state;
+  //vm.text = NavbarService.state;
 
   vm.geneName = 'WASH7P';
 

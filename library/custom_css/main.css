@@ -17,15 +17,16 @@
 /*--------------------------------------------------------------------------------*/
 
 .left-bar {
-  position:absolute;
+  position: fixed;
   /*float: left;*/
   width: 200px;
   background-color: #424F5A;
+  height: 100vh;
 }
 .left-bar ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 40px 0;
 }
 .left-bar li {
   font-size: 16px;
