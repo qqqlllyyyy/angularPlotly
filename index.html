@@ -5,6 +5,7 @@
 <title>Angular Plotly</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.css" rel="stylesheet">
 <link href="library/custom_css/main.css" rel="stylesheet">
 </head>
 
@@ -15,26 +16,32 @@
 <div id="main-container">
   <div ui-view></div>
 </div>
-<!-- <div ui-view></div> -->
+
 
 
 
 <!-- Third-Party Libraries -->
 <script src="library/plotly/plotly.min.js.php"></script>
-
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="library/bootbox.js"></script>
 
+<!-- Angular Related -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.1/angular-material.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-aria.min.js"></script>
+
+
+<!-- My Own Files -->
 <script src="scripts/app.js"></script>
 <script src="scripts/services/navbarService.js"></script>
 <script src="scripts/controllers/homepageController.js"></script>
 <script src="scripts/controllers/bubblePlotController.js"></script>
 <script src="scripts/controllers/leftBarController.js"></script>
+<script src="scripts/controllers/UIElementsController.js"></script>
 
 <script>
 $(document).ready(function() {

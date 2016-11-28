@@ -1,4 +1,4 @@
-var app = angular.module("AngularPlotly", ["ui.router", "ngAnimate"]);
+var app = angular.module("AngularPlotly", ["ui.router", "ngAnimate", "ngMaterial"]);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
@@ -19,6 +19,24 @@ app.config(function($stateProvider, $urlRouterProvider){
       url:"/volcano-plot",
       controller: "VolcanoPlotController as volcanoPlotCtrl",
       templateUrl: "views/volcanoPlotHome.html"
+    })
+    .state("UIElements", {
+      url:"/UI-elements",
+      controller: "UIElementsController as UIElementsPlotCtrl",
+      templateUrl: "views/UIElements.html"
     });
 
+});
+
+
+
+
+
+
+app.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+
+  $scope.googleUrl = 'http://google.com';
 });

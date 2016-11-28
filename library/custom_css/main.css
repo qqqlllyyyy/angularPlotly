@@ -7,20 +7,13 @@
   margin-right: 0;
 }
 .width-300 {
-  width: 300px;
+  width: 300px !important;
 }
 
-/*.modal.fade-scale {
-  transform: scale(0);
-  opacity: 0;
-  -webkit-transition: all .25s linear;
-  -o-transition: all .25s linear;
-  transition: all .25s linear;
+.green {
+  color: #009966;
 }
-.modal.fade-scale.in {
-  opacity: 1;
-  transform: scale(1);
-}*/
+
 
 a {
   cursor: pointer;
@@ -66,6 +59,19 @@ a {
 
 
 
+/*--------------------------------------------------------------------------------*/
+/*-- Angular Material Layout Update --*/
+/*--------------------------------------------------------------------------------*/
+
+.md-button {
+  margin-left: 0;
+  margin-right: 0;
+}
+md-input-container label {
+  margin-bottom: 0 !important;
+}
+
+
 
 /*--------------------------------------------------------------------------------*/
 /*-- Main Page Layout --*/
@@ -108,4 +114,5 @@ a {
   margin-left: 200px;
   display: inline-block;
   padding: 10px 20px;
+  min-width:70%;
 }
