@@ -2,7 +2,10 @@ app.controller('BubblePlotController', function($http, NavbarService) {
 
   var vm = this;
 
-  //vm.text = NavbarService.state;
+  // NavBar Service
+  vm.navBar = NavbarService;
+
+  vm.drawBtnBusy = false;
 
   vm.geneName = 'WASH7P';
 
@@ -14,8 +17,11 @@ app.controller('BubblePlotController', function($http, NavbarService) {
     width: 480
   };
 
-  // Function
+
+  // Draw Function
   vm.refershBubblePlot = function() {
+
+    vm.drawBtnBusy = true;
 
     var data = {
       geneName: vm.geneName,
@@ -24,13 +30,17 @@ app.controller('BubblePlotController', function($http, NavbarService) {
     $http
       .post("backend/bubblePlotExe.php?action=getData", data)
       .success(function(response) {
+
         console.log(response);
 
         if (response.message == 'Success') {
           vm.bubblePlotData = response.plotData;
           Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
-        } else {
+          vm.drawBtnBusy = false;
+        }
 
+        else {
+          vm.drawBtnBusy = false;
           bootbox.alert({
             title: "Error",
             message: response.messageDetail,

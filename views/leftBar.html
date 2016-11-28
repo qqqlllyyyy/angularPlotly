@@ -7,7 +7,7 @@
     <a ng-repeat="list in leftBarCtrl.stateList"
        ui-sref="{{ list.link }}"
        ng-click="leftBarCtrl.changeState(list.link)">
-      <li ng-class="{'active': leftBarCtrl.state == list.link}">
+      <li ng-class="{'active': leftBarCtrl.leftBar.state == list.link}">
         <i class="fa {{ list.icon }}"></i>&nbsp;
         {{ list.name }}
       </li>

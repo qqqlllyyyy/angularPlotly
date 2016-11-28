@@ -22,6 +22,10 @@
   transform: scale(1);
 }*/
 
+a {
+  cursor: pointer;
+}
+
 .modal-dialog {
   margin-top: 15vh;
 }

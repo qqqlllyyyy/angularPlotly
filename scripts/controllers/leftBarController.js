@@ -1,12 +1,13 @@
 app.controller('LeftBarController', function(NavbarService) {
   var vm = this;
 
-  vm.state = NavbarService.state;
+  vm.leftBar = NavbarService;
 
   vm.stateList = NavbarService.stateList;
 
   vm.changeState = function(newState) {
-    vm.state = newState;
+    NavbarService.changeState(newState);
+    vm.state = NavbarService.state;
   };
 
 });
