@@ -5,8 +5,26 @@ if (isset($_GET['action']) && $_GET['action'] == 'getData') {
 
   $data = json_decode(file_get_contents("php://input"));
   $geneName = $data -> geneName;
+  $result = array();
 
-  $result = array(
+
+
+  // If something is wrong
+  // ---------------------------------------------
+  // $result['message'] = 'Error';
+  // $result['messageDetail'] = 'Something wrong.';
+  // echo json_encode($result);
+  // exit();
+
+
+
+
+
+
+
+  $result = array();
+  $result['message'] = 'Success';
+  $result['plotData'] = array(
     array(
       'x'          => array('11', '21', '31', '41'),
       'y'          => array('11', '12', '13', '14'),

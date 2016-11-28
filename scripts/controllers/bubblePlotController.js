@@ -2,7 +2,9 @@ app.controller('BubblePlotController', function($http) {
 
   var vm = this;
 
-  vm.text = '';
+  // Error message handling
+  vm.errorMsg = '';
+  vm.showErrorMsg = false;
 
   vm.geneName = 'WASH7P';
 
@@ -37,11 +39,21 @@ app.controller('BubblePlotController', function($http) {
       .post("backend/bubblePlotExe.php?action=getData", data)
       .success(function(response) {
         console.log(response);
-        vm.bubblePlotData = response;
-        Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
+
+        if (response.message != 'Error') {
+          vm.bubblePlotData = response.plotData;
+          Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
+        } else {
+          vm.errorMsg = response.messageDetail;
+          //vm.errorMsg = 'aa';
+          vm.showErrorMsg = true;
+        }
+
       })
       .error(function(error) {
         console.log(error);
+        vm.errorMsg = error;
+        vm.showErrorMsg = true;
       });
 
 
