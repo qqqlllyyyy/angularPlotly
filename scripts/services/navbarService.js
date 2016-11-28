@@ -6,7 +6,8 @@ app.service('NavbarService', function() {
 
   vm.stateList = [
     {'link': 'homepage', 'name': 'Home', 'icon': 'fa-home'},
-    {'link': 'bubblePlot', 'name': 'Bubble Plot', 'icon': 'fa-dot-circle-o'}
+    {'link': 'bubblePlot', 'name': 'Bubble Plot', 'icon': 'fa-dot-circle-o'},
+    {'link': 'volcanoPlot', 'name': 'Volcano Plot', 'icon': 'fa-line-chart'},
   ];
 
 });

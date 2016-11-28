@@ -11,13 +11,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'getData') {
 
   // If something is wrong
   // ---------------------------------------------
-  // $result['message'] = 'Error';
-  // $result['messageDetail'] = 'Something wrong.';
-  // echo json_encode($result);
-  // exit();
-
-
-
+  $result['message'] = 'Error';
+  $result['messageDetail'] = 'Something wrong.';
+  echo json_encode($result);
+  exit();
 
 
 

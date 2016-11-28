@@ -14,6 +14,11 @@ app.config(function($stateProvider, $urlRouterProvider){
       url:"/bubble-plot",
       controller: "BubblePlotController as bubblePlotCtrl",
       templateUrl: "views/bubblePlotHome.html"
+    })
+    .state("volcanoPlot", {
+      url:"/volcano-plot",
+      controller: "VolcanoPlotController as volcanoPlotCtrl",
+      templateUrl: "views/volcanoPlotHome.html"
     });
 
 });
