@@ -43,10 +43,10 @@
 
 
 
-
+  <!-- Submit Button -->
   <md-button class="md-raised md-primary m-t-1"
              ng-click="bubblePlotCtrl.refershBubblePlot()"
-             ng-disabled="bubblePlotCtrl.drawBtnBusy">
+             ng-disabled="bubblePlotCtrl.drawBtnBusy || bubblePlotCtrl.geneName == '' || bubblePlotCtrl.yField == '' || bubblePlotCtrl.colorField == ''">
     <span ng-if="!bubblePlotCtrl.drawBtnBusy"><i class="fa fa-paint-brush"></i> Draw</span>
     <span ng-if="bubblePlotCtrl.drawBtnBusy"><i class="fa fa-spin fa-spinner"></i> Draw</span>
   </md-button>

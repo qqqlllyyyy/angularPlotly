@@ -5,13 +5,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'getData') {
 
   $data = json_decode(file_get_contents("php://input"));
   $geneName = $data -> geneName;
+  $yField = $data -> yField;
+  $colorField = $data -> colorField;
   $result = array();
 
 
-  // // If something is wrong
-  // // ---------------------------------------------
+  // If something is wrong
+  // ---------------------------------------------
   // $result['message'] = 'Error';
-  // $result['messageDetail'] = 'Something wrong.';
+  // $result['messageDetail'] = 'Something wrong.' . $yField . $colorField;
   // echo json_encode($result);
   // exit();
 

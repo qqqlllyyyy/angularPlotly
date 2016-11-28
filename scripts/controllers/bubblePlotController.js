@@ -27,7 +27,9 @@ app.controller('BubblePlotController', function($http, NavbarService) {
   vm.refershBubblePlot = function() {
     vm.drawBtnBusy = true;
     var data = {
-      geneName: vm.geneName,
+      geneName:    vm.geneName,
+      yField:      vm.yField,
+      colorField:  vm.colorField
     };
     $http
       .post("backend/bubblePlotExe.php?action=getData", data)
@@ -59,7 +61,7 @@ app.controller('BubblePlotController', function($http, NavbarService) {
         vm.errorMsg = error;
         vm.showErrorMsg = true;
       });
-      
+
   };
 
 });
