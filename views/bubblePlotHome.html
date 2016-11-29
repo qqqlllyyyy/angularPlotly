@@ -1,7 +1,13 @@
 
 <h1>Bubble Plot</h1>
 <hr />
-<a ng-click="bubblePlotCtrl.navBar.changeState('homepage')"><i class="fa fa-angle-double-right"></i> Back to homepage</a>
+<a ng-click="bubblePlotCtrl.navBar.changeState('homepage')">
+  <i class="fa fa-angle-double-right"></i> Back to homepage
+</a>
+
+<a ng-click="bubblePlotCtrl.loadExample()" class="m-l-1">
+  <i class="fa fa-angle-double-right"></i> Load Example
+</a>
 
 
 <div class="row m-x-0 m-t-1">
@@ -36,7 +42,9 @@
     <md-input-container class="md-block">
       <md-icon class="text-center"><i class="fa fa-paint-brush fa-lg green"></i></md-icon>
       <label>Color Field</label>
-      <md-select class="width-300" ng-model="bubblePlotCtrl.colorField">
+      <md-select class="width-300"
+                 ng-model="bubblePlotCtrl.colorField"
+                 ng-change="bubblePlotCtrl.firstButton=true;bubblePlotCtrl.dataFetched=false;">
         <md-option ng-repeat="field in bubblePlotCtrl.fieldList" ng-value="field">
           {{field}}
         </md-option>
@@ -51,8 +59,17 @@
                             || bubblePlotCtrl.geneName == ''
                             || bubblePlotCtrl.yField == ''
                             || bubblePlotCtrl.colorField == ''">
-      <span ng-if="!bubblePlotCtrl.drawBtnBusy"><i class="fa fa-paint-brush"></i> Next Step</span>
-      <span ng-if="bubblePlotCtrl.drawBtnBusy"><i class="fa fa-spin fa-spinner"></i> Next Step</span>
+      <span ng-if="!bubblePlotCtrl.drawBtnBusy"><i class="fa fa-paint-brush"></i> Plot</span>
+      <span ng-if="bubblePlotCtrl.drawBtnBusy"><i class="fa fa-spin fa-spinner"></i> Plot</span>
+    </md-button>
+
+    <!-- Second Step Submit Button -->
+    <md-button class="md-raised md-primary m-t-1"
+               ng-click="bubblePlotCtrl.refershBubblePlot()"
+               ng-if="bubblePlotCtrl.dataFetched"
+               ng-disabled="bubblePlotCtrl.secondBtnBusy">
+      <span ng-if="!bubblePlotCtrl.secondBtnBusy"><i class="fa fa-paint-brush"></i> Re-Plot</span>
+      <span ng-if="bubblePlotCtrl.secondBtnBusy"><i class="fa fa-spin fa-spinner"></i> Re-Plot</span>
     </md-button>
 
   </div>
@@ -67,6 +84,9 @@
 
   <!-- Second Step Form -->
   <div class="float-left width-400 p-l-1 p-b-0 alert alert-warning" ng-if="bubblePlotCtrl.dataFetched">
+
+    <h4>Chart Settings</h4>
+    <hr class="m-t-0" />
 
     <!-- Marker Area Type -->
     <p class="gray font-12"><strong>Marker Area Type:</strong></p>
@@ -93,10 +113,12 @@
       <md-radio-button value="customize">Customize</md-radio-button>
     </md-radio-group>
 
+
   </div>
 
 
 
 </div>
-
-<div id="bubblePlotDiv" style="width: 480px; height: 400px;"></div>
+<div class="row m-x-0 m-t-1">
+  <div id="bubblePlotDiv" ng-show="bubblePlotCtrl.dataFetched" style="width:100%;"></div>
+</div>

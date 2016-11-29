@@ -7,11 +7,17 @@
 .p-l-1 {
   padding-left: 15px;
 }
+.m-t-0 {
+  margin-top: 0;
+}
 .m-t-1 {
   margin-top: 15px;
 }
 .m-t-3 {
   margin-top: 45px;
+}
+.m-l-1 {
+  margin-left: 15px;
 }
 .m-x-0 {
   margin-left: 0;
@@ -57,7 +63,9 @@ a {
   cursor: pointer;
 }
 
-
+html, body {
+  background-color: #FFFFFF;
+}
 
 /*--------------------------------------------------------------------------------*/
 /*-- Angular Material Layout Update --*/

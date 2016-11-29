@@ -6,6 +6,7 @@ app.controller('BubblePlotController', function($http, NavbarService) {
   vm.navBar          = NavbarService;
 
   vm.drawBtnBusy     = false;                // Busy when processing
+  vm.secondBtnBusy   = false;                // Busy when drawing plot
 
   vm.geneName        = '';                   // Gene Name
   vm.yField          = '';                   // Y-axis Field Name
@@ -17,6 +18,7 @@ app.controller('BubblePlotController', function($http, NavbarService) {
   vm.markerArea      = 'AdjustedPValue';     // Marker Area (p-value or FDR)
   vm.yDisplay        = 'top10';              // Y-Axis Diaplay Settings
   vm.colorDisplay    = 'top10';              // Color Diaplay Settings
+  vm.chartWidth      = '1000';               // Chart Container Width
 
 
 
@@ -28,28 +30,42 @@ app.controller('BubblePlotController', function($http, NavbarService) {
 
   // Bubble Plot Layout
   vm.bubblePlotLayout = {
-    title: 'Marker Size and Color',
-    showlegend: false,
-    height: 400,
-    width: 480
+    height: 800,
+    //width: 1000,
+    hovermode: 'closest',
+    title: 'Bubble Chart',
+    xaxis: {
+      title: 'Log 2 Fold Change'
+    },
   };
 
 
-  // Draw Function
+  // Fetch Data Function
   vm.refershBubblePlot = function() {
-    vm.drawBtnBusy = true;
+
+    vm.drawBtnBusy     = true;
+    vm.secondBtnBusy   = true;
+    vm.chartWidth      = document.getElementById('bubblePlotDiv').parentElement.offsetWidth;
+
     var data = {
-      geneName:    vm.geneName,
-      yField:      vm.yField,
-      colorField:  vm.colorField
+      geneName:       vm.geneName,
+      yField:         vm.yField,
+      colorField:     vm.colorField,
+      markerArea:     vm.markerArea,
+      yDisplay:       vm.yDisplay,
+      colorDisplay:   vm.colorDisplay,
+      width:          vm.chartWidth,
     };
+
     $http
       .post("backend/bubblePlotExe.php?action=getData", data)
       .success(function(response) {
         console.log(response);
+        vm.secondBtnBusy = false;
         // Response success
         if (response.message == 'Success') {
           vm.bubblePlotData = response.plotData;
+          vm.bubblePlotLayout = response.layout;
           Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
           vm.drawBtnBusy = false;
           vm.dataFetched = true;
@@ -72,10 +88,22 @@ app.controller('BubblePlotController', function($http, NavbarService) {
       })
       .error(function(error) {
         console.log(error);
-        vm.errorMsg = error;
-        vm.showErrorMsg = true;
+        vm.secondBtnBusy = false;
       });
-
   };
+
+
+
+
+  vm.loadExample = function() {
+    vm.geneName      = 'WASH7P';
+    vm.yField        = 'Case_DiseaseState';
+    vm.colorField    = 'Case_CellType';
+  };
+
+
+
+
+
 
 });
