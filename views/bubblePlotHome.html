@@ -6,15 +6,15 @@
 
 <div class="row m-x-0 m-t-1">
 
-
   <!-- First Step Form -->
-  <div class="float-left width-350">
+  <div class="float-left width-340">
 
     <!-- Gene Name -->
     <md-input-container class="md-block">
       <md-icon class="text-center"><i class="fa fa-leaf fa-lg green"></i></md-icon>
       <input class="width-300"
              ng-model="bubblePlotCtrl.geneName"
+             ng-change="bubblePlotCtrl.firstButton=true;bubblePlotCtrl.dataFetched=false;"
              placeholder="Gene Name"
              ng-required="true">
     </md-input-container>
@@ -22,8 +22,10 @@
     <!-- Y-axis Field -->
     <md-input-container class="md-block">
       <md-icon class="text-center"><i class="fa fa-tag fa-lg green"></i></md-icon>
-      <label>Y-axis Field</label>
-      <md-select class="width-300" ng-model="bubblePlotCtrl.yField">
+      <label>Y-Axis Field</label>
+      <md-select class="width-300"
+                 ng-model="bubblePlotCtrl.yField"
+                 ng-change="bubblePlotCtrl.firstButton=true;bubblePlotCtrl.dataFetched=false;">
         <md-option ng-repeat="field in bubblePlotCtrl.fieldList" ng-value="field">
           {{field}}
         </md-option>
@@ -44,6 +46,7 @@
     <!-- First Step Submit Button -->
     <md-button class="md-raised md-primary m-t-1"
                ng-click="bubblePlotCtrl.refershBubblePlot()"
+               ng-if="bubblePlotCtrl.firstButton"
                ng-disabled="bubblePlotCtrl.drawBtnBusy
                             || bubblePlotCtrl.geneName == ''
                             || bubblePlotCtrl.yField == ''
@@ -56,19 +59,38 @@
 
 
 
-  <div class="float-left width-70 p-t-1 text-center animated fadeInLeft" ng-if="bubblePlotCtrl.dataFetched">
-    <i class="fa fa-arrow-circle-right fa-3x gray m-t-3"></i>
+  <div class="float-left width-70 p-t-1 text-center animated fadeInLeft">
+    <i class="fa fa-arrow-circle-right fa-3x gray m-t-3" ng-if="bubblePlotCtrl.dataFetched"></i>
   </div>
 
 
 
   <!-- Second Step Form -->
-  <div class="float-left width-350 p-t-1 p-l-1" ng-if="bubblePlotCtrl.dataFetched">
+  <div class="float-left width-400 p-l-1" ng-if="bubblePlotCtrl.dataFetched">
 
-    <p class="gray"><strong>Marker Area Type:</strong></p>
+    <!-- Marker Area Type -->
+    <p class="gray font-12"><strong>Marker Area Type:</strong></p>
     <md-radio-group ng-model="bubblePlotCtrl.markerArea" class="inline">
       <md-radio-button value="PValue" class="md-primary">P-Value</md-radio-button>
       <md-radio-button value="AdjustedPValue">Adjusted P-Value</md-radio-button>
+    </md-radio-group>
+
+    <!-- Y-Axis Display Setting -->
+    <p class="gray font-12"><strong>Y-Axis Display Settings:</strong></p>
+    <md-radio-group ng-model="bubblePlotCtrl.yDisplay" class="inline">
+      <md-radio-button value="top10" class="md-primary">Top 10</md-radio-button>
+      <md-radio-button value="top20">Top 20</md-radio-button>
+      <md-radio-button value="all">All</md-radio-button>
+      <md-radio-button value="customize">Customize</md-radio-button>
+    </md-radio-group>
+
+    <!-- Color Display Setting -->
+    <p class="gray font-12"><strong>Color Display Settings:</strong></p>
+    <md-radio-group ng-model="bubblePlotCtrl.colorDisplay" class="inline">
+      <md-radio-button value="top10" class="md-primary">Top 10</md-radio-button>
+      <md-radio-button value="top20">Top 20</md-radio-button>
+      <md-radio-button value="all">All</md-radio-button>
+      <md-radio-button value="customize">Customize</md-radio-button>
     </md-radio-group>
 
   </div>

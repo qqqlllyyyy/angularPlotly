@@ -20,8 +20,14 @@
 .width-300 {
   width: 300px !important;
 }
+.width-320 {
+  width: 340px !important;
+}
 .width-350 {
   width: 350px !important;
+}
+.width-400 {
+  width: 400px !important;
 }
 
 .green {
@@ -34,6 +40,10 @@
 .float-left {
   display: inline-block;
   float:left;
+}
+
+.font-12 {
+  font-size: 12px;
 }
 
 

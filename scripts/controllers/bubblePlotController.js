@@ -5,15 +5,18 @@ app.controller('BubblePlotController', function($http, NavbarService) {
   // NavBar Service
   vm.navBar          = NavbarService;
 
-  vm.drawBtnBusy     = false;           // Busy when processing
+  vm.drawBtnBusy     = false;                // Busy when processing
 
-  vm.geneName        = '';              // Gene Name
-  vm.yField          = '';              // Y-axis Field Name
-  vm.colorField      = '';              // Color Field Name
+  vm.geneName        = '';                   // Gene Name
+  vm.yField          = '';                   // Y-axis Field Name
+  vm.colorField      = '';                   // Color Field Name
 
 
-  vm.dataFetched     = false;           // First Step of Drawing Chart is Finished
-  vm.markerArea      = '';              // Marker Area (p-value or FDR)
+  vm.firstButton     = true;                 // First Button Shown
+  vm.dataFetched     = false;                // First Step of Drawing Chart is Finished
+  vm.markerArea      = 'AdjustedPValue';     // Marker Area (p-value or FDR)
+  vm.yDisplay        = 'top10';              // Y-Axis Diaplay Settings
+  vm.colorDisplay    = 'top10';              // Color Diaplay Settings
 
 
 
@@ -50,6 +53,7 @@ app.controller('BubblePlotController', function($http, NavbarService) {
           Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
           vm.drawBtnBusy = false;
           vm.dataFetched = true;
+          vm.firstButton = false;
         }
         // Response failed
         else {
