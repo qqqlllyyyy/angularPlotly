@@ -1,23 +1,51 @@
-
+.p-t-1 {
+  padding-top: 15px;
+}
+.p-l-1 {
+  padding-left: 15px;
+}
 .m-t-1 {
   margin-top: 15px;
+}
+.m-t-3 {
+  margin-top: 45px;
 }
 .m-x-0 {
   margin-left: 0;
   margin-right: 0;
 }
+.width-70 {
+  width: 70px !important;
+}
 .width-300 {
   width: 300px !important;
+}
+.width-350 {
+  width: 350px !important;
 }
 
 .green {
   color: #009966;
+}
+.gray {
+  color: #9E9E9E;
+}
+
+.float-left {
+  display: inline-block;
+  float:left;
 }
 
 
 a {
   cursor: pointer;
 }
+
+
+
+/*--------------------------------------------------------------------------------*/
+/*-- Angular Material Layout Update --*/
+/*--------------------------------------------------------------------------------*/
 
 .modal-dialog {
   margin-top: 15vh;
@@ -70,6 +98,10 @@ a {
 md-input-container label {
   margin-bottom: 0 !important;
 }
+md-radio-group.inline md-radio-button {
+  display: inline-block;
+  margin-right: 10px !important;
+}
 
 
 
@@ -114,5 +146,5 @@ md-input-container label {
   margin-left: 200px;
   display: inline-block;
   padding: 10px 20px;
-  min-width:70%;
+  min-width:80%;
 }

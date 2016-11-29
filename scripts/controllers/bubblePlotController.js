@@ -3,13 +3,22 @@ app.controller('BubblePlotController', function($http, NavbarService) {
   var vm = this;
 
   // NavBar Service
-  vm.navBar = NavbarService;
+  vm.navBar          = NavbarService;
 
-  vm.drawBtnBusy = false;
+  vm.drawBtnBusy     = false;           // Busy when processing
 
-  vm.geneName = '';
-  vm.yField = '';
-  vm.colorField = '';
+  vm.geneName        = '';              // Gene Name
+  vm.yField          = '';              // Y-axis Field Name
+  vm.colorField      = '';              // Color Field Name
+
+
+  vm.dataFetched     = false;           // First Step of Drawing Chart is Finished
+  vm.markerArea      = '';              // Marker Area (p-value or FDR)
+
+
+
+
+
 
   vm.fieldList = ['Case_DiseaseState', 'Case_SampleSource', 'Case_CellType', 'Case_Gender'];
 
@@ -40,6 +49,7 @@ app.controller('BubblePlotController', function($http, NavbarService) {
           vm.bubblePlotData = response.plotData;
           Plotly.newPlot('bubblePlotDiv', vm.bubblePlotData, vm.bubblePlotLayout);
           vm.drawBtnBusy = false;
+          vm.dataFetched = true;
         }
         // Response failed
         else {

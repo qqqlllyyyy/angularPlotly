@@ -6,50 +6,74 @@
 
 <div class="row m-x-0 m-t-1">
 
-  <!-- <input ng-model="bubblePlotCtrl.geneName" class="form-control width-300"> -->
 
-  <!-- Gene Name -->
-  <md-input-container class="md-block">
-    <md-icon class="text-center"><i class="fa fa-leaf fa-lg green"></i></md-icon>
-    <input class="width-300"
-           ng-model="bubblePlotCtrl.geneName"
-           placeholder="Gene Name"
-           ng-required="true">
-  </md-input-container>
+  <!-- First Step Form -->
+  <div class="float-left width-350">
+
+    <!-- Gene Name -->
+    <md-input-container class="md-block">
+      <md-icon class="text-center"><i class="fa fa-leaf fa-lg green"></i></md-icon>
+      <input class="width-300"
+             ng-model="bubblePlotCtrl.geneName"
+             placeholder="Gene Name"
+             ng-required="true">
+    </md-input-container>
+
+    <!-- Y-axis Field -->
+    <md-input-container class="md-block">
+      <md-icon class="text-center"><i class="fa fa-tag fa-lg green"></i></md-icon>
+      <label>Y-axis Field</label>
+      <md-select class="width-300" ng-model="bubblePlotCtrl.yField">
+        <md-option ng-repeat="field in bubblePlotCtrl.fieldList" ng-value="field">
+          {{field}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <!-- Color Field -->
+    <md-input-container class="md-block">
+      <md-icon class="text-center"><i class="fa fa-paint-brush fa-lg green"></i></md-icon>
+      <label>Color Field</label>
+      <md-select class="width-300" ng-model="bubblePlotCtrl.colorField">
+        <md-option ng-repeat="field in bubblePlotCtrl.fieldList" ng-value="field">
+          {{field}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <!-- First Step Submit Button -->
+    <md-button class="md-raised md-primary m-t-1"
+               ng-click="bubblePlotCtrl.refershBubblePlot()"
+               ng-disabled="bubblePlotCtrl.drawBtnBusy
+                            || bubblePlotCtrl.geneName == ''
+                            || bubblePlotCtrl.yField == ''
+                            || bubblePlotCtrl.colorField == ''">
+      <span ng-if="!bubblePlotCtrl.drawBtnBusy"><i class="fa fa-paint-brush"></i> Next Step</span>
+      <span ng-if="bubblePlotCtrl.drawBtnBusy"><i class="fa fa-spin fa-spinner"></i> Next Step</span>
+    </md-button>
+
+  </div>
 
 
-  <!-- Y-axis Field -->
-  <md-input-container class="md-block">
-    <md-icon class="text-center"><i class="fa fa-tag fa-lg green"></i></md-icon>
-    <label>Y-axis Field</label>
-    <md-select class="width-300" ng-model="bubblePlotCtrl.yField">
-      <md-option ng-repeat="field in bubblePlotCtrl.fieldList" ng-value="field">
-        {{field}}
-      </md-option>
-    </md-select>
-  </md-input-container>
 
-
-  <!-- Color Field -->
-  <md-input-container class="md-block">
-    <md-icon class="text-center"><i class="fa fa-paint-brush fa-lg green"></i></md-icon>
-    <label>Color Field</label>
-    <md-select class="width-300" ng-model="bubblePlotCtrl.colorField">
-      <md-option ng-repeat="field in bubblePlotCtrl.fieldList" ng-value="field">
-        {{field}}
-      </md-option>
-    </md-select>
-  </md-input-container>
+  <div class="float-left width-70 p-t-1 text-center animated fadeInLeft" ng-if="bubblePlotCtrl.dataFetched">
+    <i class="fa fa-arrow-circle-right fa-3x gray m-t-3"></i>
+  </div>
 
 
 
-  <!-- Submit Button -->
-  <md-button class="md-raised md-primary m-t-1"
-             ng-click="bubblePlotCtrl.refershBubblePlot()"
-             ng-disabled="bubblePlotCtrl.drawBtnBusy || bubblePlotCtrl.geneName == '' || bubblePlotCtrl.yField == '' || bubblePlotCtrl.colorField == ''">
-    <span ng-if="!bubblePlotCtrl.drawBtnBusy"><i class="fa fa-paint-brush"></i> Draw</span>
-    <span ng-if="bubblePlotCtrl.drawBtnBusy"><i class="fa fa-spin fa-spinner"></i> Draw</span>
-  </md-button>
+  <!-- Second Step Form -->
+  <div class="float-left width-350 p-t-1 p-l-1" ng-if="bubblePlotCtrl.dataFetched">
+
+    <p class="gray"><strong>Marker Area Type:</strong></p>
+    <md-radio-group ng-model="bubblePlotCtrl.markerArea" class="inline">
+      <md-radio-button value="PValue" class="md-primary">P-Value</md-radio-button>
+      <md-radio-button value="AdjustedPValue">Adjusted P-Value</md-radio-button>
+    </md-radio-group>
+
+  </div>
+
+
 
 </div>
 
